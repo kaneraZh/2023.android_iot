@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.graphics.Path;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -16,10 +18,48 @@ public class MainActivity extends AppCompatActivity {
     EditText input_a;
     public void setInput_a(EditText input_a) {
         this.input_a = input_a;
+        this.input_a.addTextChangedListener(
+                new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+                    }
+
+                    @Override
+                    public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+                    }
+
+                    @Override
+                    public void afterTextChanged(Editable editable) {
+                        display_update();
+                    }
+                }
+        );
+        display_update();
     }
     EditText input_b;
     public void setInput_b(EditText input_b) {
         this.input_b = input_b;
+        this.input_b.addTextChangedListener(
+                new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+                    }
+
+                    @Override
+                    public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+                    }
+
+                    @Override
+                    public void afterTextChanged(Editable editable) {
+                        display_update();
+                    }
+                }
+        );
+        display_update();
     }
     enum Operator{
         SUMA,
@@ -31,10 +71,13 @@ public class MainActivity extends AppCompatActivity {
     Operator operator_current;
     public void setOperator_current(Operator operator_current) {
         this.operator_current = operator_current;
+        display_update();
     }
     double get_result(){
-        double a = Double.parseDouble(input_a.getText().toString());
-        double b = Double.parseDouble(input_b.getText().toString());
+        String text_a = input_a.getText().toString();
+        String text_b = input_b.getText().toString();
+        double a = Double.parseDouble(text_a.isEmpty() ? "0.0" : text_a);
+        double b = Double.parseDouble(text_b.isEmpty() ? "0.0" : text_b);
         switch (operator_current){
             case SUMA:return (a+b);
             case RESTA:return (a-b);
@@ -44,15 +87,21 @@ public class MainActivity extends AppCompatActivity {
                 throw new Error();
         }
     }
+    TextView display;
+    public void setDisplay(TextView display) { this.display = display; }
+    void display_update(){
+        String result;
+        try { result = Double.toString(get_result()); }
+        catch (Throwable t){ result = "error"; }
+        if(display != null) display.setText(result);
+    }
     Button operator_sum;
     public void setOperator_sum(Button operator_sum) {
         this.operator_sum = operator_sum;
         this.operator_sum.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
-                    public void onClick(View view) {
-                        setOperator_current(Operator.SUMA);
-                    }
+                    public void onClick(View view) { setOperator_current(Operator.SUMA); }
                 }
         );
     }
@@ -62,9 +111,7 @@ public class MainActivity extends AppCompatActivity {
         this.operator_res.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
-                    public void onClick(View view) {
-                        setOperator_current(Operator.RESTA);
-                    }
+                    public void onClick(View view) { setOperator_current(Operator.RESTA); }
                 }
         );
     }
@@ -74,9 +121,7 @@ public class MainActivity extends AppCompatActivity {
         this.operator_mul.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
-                    public void onClick(View view) {
-                        setOperator_current(Operator.MULTI);
-                    }
+                    public void onClick(View view) { setOperator_current(Operator.MULTI); }
                 }
         );
     }
@@ -86,30 +131,15 @@ public class MainActivity extends AppCompatActivity {
         this.operator_div.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
-                    public void onClick(View view) {
-                        setOperator_current(Operator.DIVISION);
-                    }
+                    public void onClick(View view) { setOperator_current(Operator.DIVISION); }
                 }
         );
-    }
-    TextView display;
-    public void setDisplay(TextView display) {
-        this.display = display;
-    }
-    void display_update(){
-        String result;
-        try {
-            result = Double.toString(get_result());
-        }
-        catch (Throwable t){
-            result = "error";
-        }
-        if(display != null)display.setText(result);
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        setDisplay( findViewById(R.id.result_display) );
         setInput_a( findViewById(R.id.input_a) );
         setInput_b( findViewById(R.id.input_b) );
         setOperator_sum( findViewById(R.id.operator_sum) );
@@ -117,6 +147,6 @@ public class MainActivity extends AppCompatActivity {
         setOperator_mul( findViewById(R.id.operator_mul) );
         setOperator_div( findViewById(R.id.operator_div) );
         setOperator_current( Operator.INVALID );
-        setDisplay( findViewById(R.id.result_display) );
+        operator_sum.performClick();
     }
 }
