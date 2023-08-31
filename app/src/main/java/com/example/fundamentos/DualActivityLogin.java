@@ -50,9 +50,9 @@ public class DualActivityLogin extends AppCompatActivity{
         );
     }
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        setContentView(R.layout.activity_dual_login);
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setLogin(findViewById(R.layout.));
+        setContentView(R.layout.activity_dual_login);
+        setLogin(findViewById(R.id.));
     }
 }
