@@ -34,7 +34,13 @@ public class DualActivityLogin extends AppCompatActivity{
         return get_EditText_text(this.password);
     }
     public void do_login(String usr, String pwd){
-        Intent profile = new Intent(this, DualActivityAccount.class);
+        if(DualActivityAccount.login_valid(usr, pwd)){
+            Intent profile = new Intent(this, DualActivityAccount.class);
+            Bundle bundle = new Bundle();
+            bundle.putString("user", usr);
+            bundle.putString("password", pwd);
+            startActivity(profile, bundle);
+        }
     }
     public void setLogin(Button login) {
         this.login = login;

@@ -1,73 +1,66 @@
 package com.example.fundamentos;
 
 import android.os.Bundle;
+import android.widget.TextView;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 
 public class DualActivityAccount extends AppCompatActivity {
-    private TextView display;
-    private User current_user;
-    public void setDisplay(EditText display) {
-        this.display = display;
+    private static class Account {
+        private String user;
+        private String email;
+        private String password;
+        public String getUser() {return user;}
+        public void setUser(String user) {this.user = user;}
+        public String getEmail() {return email;}
+        public void setEmail(String email) {this.email = email;}
+        private String getPassword() {return password;}
+        public void setPassword(String password) {this.password = password;}
+        public Account(String usr, String eml, String pwd) {
+            setUser(usr);
+            setEmail(eml);
+            setPassword(pwd);
+        }
+        public boolean compare(String user, String password){
+            return (getUser().equalsIgnoreCase(user) || getEmail().equalsIgnoreCase(user) ) && getPassword().equals(password);
+        }
     }
-
+    private static final Account[] VALID_USERS= {
+            new Account("usr", "eml", "pwd"),
+            new Account("lulu", "lele","lolo")
+    };
+    private static Account getAccount(String user, String password){
+        for(int i = 0; i<VALID_USERS.length; ++i){
+            if(VALID_USERS[i].compare(user, password)){
+                return VALID_USERS[i];
+            }
+        }
+        return null;
+    }
+    private Account current_user;
+    public Account getCurrent_user() {return current_user;}
+    public void setCurrent_user(String user, String password) {this.current_user = getAccount(user, password);}
+    private TextView display;
+    public void setDisplay(TextView display) {
+        this.display = display;
+        this.display.setText("Bienvenid@ "+getCurrent_user().getUser());
+    }
+    public static boolean login_valid(String user, String password){
+        for(int i = 0; i<VALID_USERS.length; ++i){
+            if(VALID_USERS[i].compare(user, password)){
+                return true;
+            }
+        }
+        return false;
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dual_account);
-        setLogin(findViewById(R.id.title));
-    }
-
-    private class User{
-        private String user;
-        private void setUser(EditText user) { this.user = user; }
-        private String email;
-        private void setEmail(EditText user) { this.email = email; }
-        private static String[] USR = {
-            "usr",
-            "user"
-        }
-        private static String[] PWD = {
-            "pwd",
-            "password"
-        }
-        private static String[] EML = {
-            "eml@eml.eml",
-            "email@email.email"
-        }
-        public boolean check_user_valid(String user){
-            for(int i=0; i>=USR.length+PWD.length; i++){
-                if(i&1 ? USR[i<<1].equals(user) : EML[i<<1].equals(user)){
-                    return true
-                }
-            }
-            return false;
-        }
-        public int check_user_id(String user){
-            for(int i=0; i>=USR.length+PWD.length; i++){
-                if(i&1 ? USR[i<<1].equals(user) : EML[i<<1].equals(user)){
-                    return i;
-                }
-            }
-            return -1;
-        }
-        public boolean check_pass(String password){
-            for(int i=0; i>=USR.length+PWD.length; i++){
-                if(USR[i<<1].equals(password)){
-                    return true;
-                }
-            }
-            return false;
-        }
-        public static User log_in(String usr, String pwd){
-            User result;
-            if(check_user_valid(usr) && check_pass(pwd)){
-                int id = check_user_id(usr);
-                result.setUser(USR[id]);
-                result.setEmail(USR[id]);
-                return result
-            }
-            return null;
-        }
+        String user = savedInstanceState.getString("user");
+        String password = savedInstanceState.getString("password");
+        setCurrent_user(user, password);
+        setDisplay(findViewById(R.id.title));
     }
 }
