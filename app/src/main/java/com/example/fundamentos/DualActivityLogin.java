@@ -16,24 +16,22 @@ public class DualActivityLogin extends AppCompatActivity{
     public void setUser(EditText user) {
         this.user = user;
     }
-    private String get_user(){
+    public static String get_EditText_text(EditText edit_text){
         try {
-            return this.user.getText().toString();
+            return edit_text.getText().toString();
         }
         catch (Throwable t){
             return "";
         }
+    }
+    private String get_user(){
+        return get_EditText_text(this.user);
     }
     public void setPassword(EditText password) {
         this.password = password;
     }
     private String get_password(){
-        try {
-            return this.password.getText().toString();
-        }
-        catch (Throwable t){
-            return "";
-        }
+        return get_EditText_text(this.password);
     }
     public void do_login(String usr, String pwd){
         Intent profile = new Intent(this, DualActivityAccount.class);
@@ -53,6 +51,8 @@ public class DualActivityLogin extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dual_login);
-        setLogin(findViewById(R.id.));
+        setUser(findViewById(R.id.login_user));
+        setPassword(findViewById(R.id.login_password));
+        setLogin(findViewById(R.id.login_button));
     }
 }
