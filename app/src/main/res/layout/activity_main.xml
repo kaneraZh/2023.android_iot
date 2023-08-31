@@ -18,7 +18,7 @@
             android:autoSizeTextType="uniform"
             android:layout_centerVertical="true"
             android:textAlignment="center"/>
-        </RelativeLayout>
+    </RelativeLayout>
     <LinearLayout
         android:id="@+id/input"
         android:layout_width="match_parent"
