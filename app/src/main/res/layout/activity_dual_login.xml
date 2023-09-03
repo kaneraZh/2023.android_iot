@@ -17,7 +17,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Iniciar Sesión"
-            android:textSize="40sp"
+            android:textSize="60sp"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:layout_weight="1"/>
@@ -33,14 +33,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0"
-            android:text="lala"
+            android:hint="Ingrese su usuario"
             android:drawableRight="@drawable/baseline_person_24"/>
         <EditText
             android:id="@+id/login_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="lala"
+            android:hint="Ingrese su clave"
             android:layout_weight="0"
+            android:password="true"
             android:drawableRight="@drawable/baseline_lock_24"/>
         <Space
             android:layout_width="match_parent"

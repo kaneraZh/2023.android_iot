@@ -7,8 +7,8 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
-import androidx.annotation.Nullable;
 public class DualActivityLogin extends AppCompatActivity{
     private EditText user;
     private EditText password;
@@ -36,10 +36,12 @@ public class DualActivityLogin extends AppCompatActivity{
     public void do_login(String usr, String pwd){
         if(DualActivityAccount.login_valid(usr, pwd)){
             Intent profile = new Intent(this, DualActivityAccount.class);
-            Bundle bundle = new Bundle();
-            bundle.putString("user", usr);
-            bundle.putString("password", pwd);
-            startActivity(profile, bundle);
+            profile.putExtra("user", usr);
+            profile.putExtra("password", pwd);
+            startActivity(profile);
+        }
+        else {
+            Toast.makeText(this, "usuario: usr, contraseña: pwd", Toast.LENGTH_SHORT).show();
         }
     }
     public void setLogin(Button login) {
@@ -47,9 +49,7 @@ public class DualActivityLogin extends AppCompatActivity{
         this.login.setOnClickListener(
                 new View.OnClickListener(){
                     @Override
-                    public void onClick(View view) {
-                        do_login(get_user(), get_password());
-                    }
+                    public void onClick(View view) {do_login(get_user(), get_password());}
                 }
         );
     }

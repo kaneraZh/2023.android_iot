@@ -2,6 +2,7 @@ package com.example.fundamentos;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Path;
 import android.os.Bundle;
 import android.text.Editable;
@@ -21,15 +22,9 @@ public class MainActivity extends AppCompatActivity {
         this.input_a.addTextChangedListener(
                 new TextWatcher() {
                     @Override
-                    public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-                    }
-
+                    public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
                     @Override
-                    public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-                    }
-
+                    public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
                     @Override
                     public void afterTextChanged(Editable editable) {
                         display_update();
@@ -138,6 +133,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        /*
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setDisplay( findViewById(R.id.result_display) );
         setInput_a( findViewById(R.id.input_a) );
@@ -148,5 +145,9 @@ public class MainActivity extends AppCompatActivity {
         setOperator_div( findViewById(R.id.operator_div) );
         setOperator_current( Operator.INVALID );
         operator_sum.performClick();
+         */
+        startActivity(
+                new Intent(this, DualActivityLogin.class)
+        );
     }
 }
