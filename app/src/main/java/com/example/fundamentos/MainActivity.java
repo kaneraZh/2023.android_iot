@@ -133,21 +133,16 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        /*
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        setDisplay( findViewById(R.id.result_display) );
-        setInput_a( findViewById(R.id.input_a) );
-        setInput_b( findViewById(R.id.input_b) );
-        setOperator_sum( findViewById(R.id.operator_sum) );
-        setOperator_res( findViewById(R.id.operator_res) );
-        setOperator_mul( findViewById(R.id.operator_mul) );
-        setOperator_div( findViewById(R.id.operator_div) );
-        setOperator_current( Operator.INVALID );
-        operator_sum.performClick();
-         */
-        startActivity(
-                new Intent(this, DualActivityLogin.class)
-        );
+//        setContentView(R.layout.activity_main);
+//        setDisplay( findViewById(R.id.result_display) );
+//        setInput_a( findViewById(R.id.input_a) );
+//        setInput_b( findViewById(R.id.input_b) );
+//        setOperator_sum( findViewById(R.id.operator_sum) );
+//        setOperator_res( findViewById(R.id.operator_res) );
+//        setOperator_mul( findViewById(R.id.operator_mul) );
+//        setOperator_div( findViewById(R.id.operator_div) );
+//        setOperator_current( Operator.INVALID );
+//        operator_sum.performClick();
+        startActivity(new Intent(this, SecondActivityProfile.class));
     }
 }

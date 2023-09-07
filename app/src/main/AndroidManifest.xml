@@ -16,7 +16,7 @@
             android:name=".SecondActivityProfile"
             android:exported="false" />
         <activity
-            android:name=".SecondActivityLogin"
+            android:name=".SecondActivitySignin"
             android:exported="false" />
         <activity
             android:name=".DualActivityAccount"

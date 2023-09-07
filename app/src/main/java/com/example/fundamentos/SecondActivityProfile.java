@@ -3,6 +3,8 @@ package com.example.fundamentos;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class SecondActivityProfile extends AppCompatActivity {
     private TextView titulo;
