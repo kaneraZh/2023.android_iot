@@ -9,12 +9,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import com.google.android.material.navigation.NavigationBarView;
-
 
 public class DualActivityAccount extends AppCompatActivity {
     private static class Account {
@@ -55,7 +51,7 @@ public class DualActivityAccount extends AppCompatActivity {
     private TextView display;
     public void setDisplay(TextView display) {
         this.display = display;
-        this.display.setText("Bienvenid@ "+getCurrent_user().getUser());
+        this.display.setText("Bienvenid@ %name".replace("%name", getCurrent_user().getUser()));
     }
     public static boolean login_valid(String user, String password){
         for(int i = 0; i<VALID_USERS.length; ++i){
@@ -109,7 +105,7 @@ public class DualActivityAccount extends AppCompatActivity {
     private Spinner spinner_list;
     public void setSpinner_list(Spinner spinner_list) {
         this.spinner_list = spinner_list;
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, SPINNER_LIST);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, SPINNER_LIST);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         this.spinner_list.setAdapter(adapter);
         this.spinner_list.setOnItemSelectedListener(
