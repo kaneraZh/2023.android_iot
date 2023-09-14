@@ -10,7 +10,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class SecondActivityProfile extends AppCompatActivity {
+public class Activity3Profile extends AppCompatActivity {
     public static class Profile{
         public Profile(
                 String nombre,
@@ -132,7 +132,7 @@ public class SecondActivityProfile extends AppCompatActivity {
         this.qr = qr;
     }
     private void do_logout(){
-        startActivity(new Intent(this, SecondActivitySignin.class));
+        startActivity(new Intent(this, Activity3Signin.class));
     }
     private Button btn_logout;
 
@@ -159,7 +159,7 @@ public class SecondActivityProfile extends AppCompatActivity {
                 i.getStringExtra("telefono"),
                 i.getStringExtra("email")
         );
-        setContentView(R.layout.activity_second_profile);
+        setContentView(R.layout.activity_3_profile);
         setProfile(p);
         setTitulo(findViewById(R.id.profile_titulo));
         setImagen(findViewById(R.id.profile_imagen));

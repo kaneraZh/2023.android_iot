@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class DualActivityLogin extends AppCompatActivity{
+public class Activity2Login extends AppCompatActivity{
     private EditText user;
     private EditText password;
     private Button login;
@@ -34,8 +34,8 @@ public class DualActivityLogin extends AppCompatActivity{
         return get_EditText_text(this.password);
     }
     public void do_login(String usr, String pwd){
-        if(DualActivityAccount.login_valid(usr, pwd)){
-            Intent profile = new Intent(this, DualActivityAccount.class);
+        if(Activity2Account.login_valid(usr, pwd)){
+            Intent profile = new Intent(this, Activity2Account.class);
             profile.putExtra("user", usr);
             profile.putExtra("password", pwd);
             startActivity(profile);
@@ -56,7 +56,7 @@ public class DualActivityLogin extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_dual_login);
+        setContentView(R.layout.activity_2_login);
         setUser(findViewById(R.id.login_user));
         setPassword(findViewById(R.id.login_password));
         setLogin(findViewById(R.id.login_button));

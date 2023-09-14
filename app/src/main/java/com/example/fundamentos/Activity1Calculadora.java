@@ -2,21 +2,16 @@ package com.example.fundamentos;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
-import android.graphics.Path;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.google.android.material.textfield.TextInputEditText;
 
-
-public class ActivityCalculadora extends AppCompatActivity {
+public class Activity1Calculadora extends AppCompatActivity {
     EditText input_a;
     public void setInput_a(EditText input_a) {
         this.input_a = input_a;
@@ -134,7 +129,7 @@ public class ActivityCalculadora extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_calculadora);
+        setContentView(R.layout.activity_1_calculadora);
         setDisplay( findViewById(R.id.result_display) );
         setInput_a( findViewById(R.id.input_a) );
         setInput_b( findViewById(R.id.input_b) );

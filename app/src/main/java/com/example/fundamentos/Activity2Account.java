@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class DualActivityAccount extends AppCompatActivity {
+public class Activity2Account extends AppCompatActivity {
     private static class Account {
         private String user;
         private String email;
@@ -62,7 +62,7 @@ public class DualActivityAccount extends AppCompatActivity {
         return false;
     }
     private void logout(){
-        Intent login = new Intent(this, DualActivityLogin.class);
+        Intent login = new Intent(this, Activity2Login.class);
         startActivity(login);
     }
     public Button btn_logout;
@@ -123,7 +123,7 @@ public class DualActivityAccount extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_dual_account);
+        setContentView(R.layout.activity_2_account);
         if(getIntent() != null){
             String user = getIntent().getStringExtra("user");
             String password = getIntent().getStringExtra("password");

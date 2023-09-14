@@ -13,19 +13,25 @@
         android:theme="@style/Theme.Fundamentos"
         tools:targetApi="31">
         <activity
-            android:name=".ActivityCalculadora"
+            android:name=".Activity4Login"
             android:exported="false" />
         <activity
-            android:name=".SecondActivityProfile"
+            android:name=".Activity4Tabs"
             android:exported="false" />
         <activity
-            android:name=".SecondActivitySignin"
+            android:name=".Activity1Calculadora"
             android:exported="false" />
         <activity
-            android:name=".DualActivityAccount"
+            android:name=".Activity3Profile"
             android:exported="false" />
         <activity
-            android:name=".DualActivityLogin"
+            android:name=".Activity3Signin"
+            android:exported="false" />
+        <activity
+            android:name=".Activity2Account"
+            android:exported="false" />
+        <activity
+            android:name=".Activity2Login"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

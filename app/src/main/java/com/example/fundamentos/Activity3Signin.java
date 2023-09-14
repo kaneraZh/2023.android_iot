@@ -4,15 +4,18 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import java.util.Date;
+import java.text.SimpleDateFormat;
+import java.util.Locale;
 
-public class SecondActivitySignin extends AppCompatActivity {
+public class Activity3Signin extends AppCompatActivity {
     
     private ImageView icono;
     public void setIcono(ImageView icono) {this.icono = icono;}
@@ -20,10 +23,14 @@ public class SecondActivitySignin extends AppCompatActivity {
     private EditText nombre;
     public void setNombre(EditText nombre) {this.nombre = nombre;}
     public String get_nombre(){return this.nombre.getText().toString();}
-    
+
+    static SimpleDateFormat date_format = new SimpleDateFormat("dd/MM/yyyy");
     private EditText nacimiento;
     public void setNacimiento(EditText nacimiento) {this.nacimiento = nacimiento;}
-    public String get_nacimiento(){return this.nacimiento.getText().toString();}
+    public String get_nacimiento(){
+        date_format.setLenient(false);
+        return date_format.parse(this.nacimiento.getText().toString());
+    }
     
     private EditText cargo;
     public void setCargo(EditText cargo) {this.cargo = cargo;}
@@ -49,7 +56,7 @@ public class SecondActivitySignin extends AppCompatActivity {
         errors+= verify_email(get_email()) ? "" : "Email es invalido\n";
         errors+= verify_telefono(get_telefono()) ? "" : "Telefono es invalido\n";
         if(errors.equals("")){
-            Intent profile = new Intent(this, SecondActivityProfile.class);
+            Intent profile = new Intent(this, Activity3Profile.class);
             profile.putExtra("nombre", get_nombre());
             profile.putExtra("nacimiento", get_nacimiento());
             profile.putExtra("cargo", get_cargo());
@@ -74,7 +81,7 @@ public class SecondActivitySignin extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_second_signin);
+        setContentView(R.layout.activity_3_signin);
         setIcono(findViewById(R.id.profile_icono));
         setNombre(findViewById(R.id.profile_nombre));
         setNacimiento(findViewById(R.id.profile_nacimiento));
