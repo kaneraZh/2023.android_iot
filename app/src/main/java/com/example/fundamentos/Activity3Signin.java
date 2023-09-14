@@ -4,16 +4,16 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import java.text.ParseException;
+import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
-import java.util.Locale;
+import java.util.Date;
 
 public class Activity3Signin extends AppCompatActivity {
     
@@ -27,9 +27,14 @@ public class Activity3Signin extends AppCompatActivity {
     static SimpleDateFormat date_format = new SimpleDateFormat("dd/MM/yyyy");
     private EditText nacimiento;
     public void setNacimiento(EditText nacimiento) {this.nacimiento = nacimiento;}
-    public String get_nacimiento(){
+    public Date get_nacimiento(){
         date_format.setLenient(false);
-        return date_format.parse(this.nacimiento.getText().toString());
+        try {
+            return date_format.parse(this.nacimiento.getText().toString());
+        }
+        catch (ParseException exception){
+            return new Date();
+        }
     }
     
     private EditText cargo;
