@@ -60,7 +60,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:inputType="date"
-                    android:hint="Fecha de nacimiento"
+                    android:hint="Fecha Nacimiento D/M/A"
                     android:minHeight="50dp"
                     android:layout_weight="1"/>
                 <EditText
