@@ -11,7 +11,6 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import java.text.ParseException;
-import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -19,7 +18,10 @@ public class Activity3Signin extends AppCompatActivity {
     
     private ImageView icono;
     public void setIcono(ImageView icono) {this.icono = icono;}
-    
+//    public String get_icono(){
+//        this.icono.
+//    }
+
     private EditText nombre;
     public void setNombre(EditText nombre) {this.nombre = nombre;}
     public String get_nombre(){return this.nombre.getText().toString();}
@@ -27,16 +29,21 @@ public class Activity3Signin extends AppCompatActivity {
     static SimpleDateFormat date_format = new SimpleDateFormat("dd/MM/yyyy");
     private EditText nacimiento;
     public void setNacimiento(EditText nacimiento) {this.nacimiento = nacimiento;}
+    public Boolean verify_nacimiento(Date fecha){return fecha.compareTo(new Date())==0;}
+    public String get_nacimiento_str(){
+        return this.nacimiento.getText().toString();
+    }
     public Date get_nacimiento(){
         date_format.setLenient(false);
         try {
-            return date_format.parse(this.nacimiento.getText().toString());
+            Date result = date_format.parse(get_nacimiento_str());
+            return result;
         }
         catch (ParseException exception){
             return new Date();
         }
     }
-    
+
     private EditText cargo;
     public void setCargo(EditText cargo) {this.cargo = cargo;}
     public String get_cargo(){return this.cargo.getText().toString();}
@@ -60,14 +67,15 @@ public class Activity3Signin extends AppCompatActivity {
         String errors = "";
         errors+= verify_email(get_email()) ? "" : "Email es invalido\n";
         errors+= verify_telefono(get_telefono()) ? "" : "Telefono es invalido\n";
+        errors+= verify_nacimiento(get_nacimiento()) ? "" : "Fecha de nacimiento es invalida, use formato <dd/mm/aaaa>\n";
         if(errors.equals("")){
             Intent profile = new Intent(this, Activity3Profile.class);
-            profile.putExtra("nombre", get_nombre());
-            profile.putExtra("nacimiento", get_nacimiento());
             profile.putExtra("cargo", get_cargo());
             profile.putExtra("email", get_email());
             profile.putExtra("alias", get_alias());
+            profile.putExtra("nombre", get_nombre());
             profile.putExtra("telefono", get_telefono());
+            profile.putExtra("nacimiento", get_nacimiento_str());
             startActivity(profile);
         }
         else {

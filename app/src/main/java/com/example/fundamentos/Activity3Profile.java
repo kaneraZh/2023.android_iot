@@ -1,7 +1,6 @@
 package com.example.fundamentos;
 
 import androidx.appcompat.app.AppCompatActivity;
-//import androidmads.library.qrgenearator;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,6 +8,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.ZoneId;
+import java.util.Date;
 
 public class Activity3Profile extends AppCompatActivity {
     public static class Profile{
@@ -20,7 +26,14 @@ public class Activity3Profile extends AppCompatActivity {
                 String telefono,
                 String email) {
             this.nombre = nombre;
-            this.nacimiento = nacimiento;
+            try{
+                SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+                format.setLenient(false);
+                this.nacimiento = format.parse(nacimiento);
+            }
+            catch (ParseException exc){
+                this.nacimiento = new Date();
+            }
             this.alias = alias;
             this.cargo = cargo;
             this.telefono = telefono;
@@ -28,7 +41,7 @@ public class Activity3Profile extends AppCompatActivity {
         }
 
         private String nombre;
-        private String nacimiento;
+        private Date nacimiento;
         private String alias;
         private String cargo;
         private String telefono;
@@ -36,14 +49,18 @@ public class Activity3Profile extends AppCompatActivity {
         public void setAlias(String alias) {this.alias = alias;}
         public void setCargo(String cargo) {this.cargo = cargo;}
         public void setNombre(String nombre) {this.nombre = nombre;}
-        public void setNacimiento(String nacimiento) {this.nacimiento =nacimiento;}
+        public void setNacimiento(Date nacimiento) {this.nacimiento = nacimiento;}
         public void setTelefono(String telefono) {this.telefono = telefono;}
         public void setEmail(String email) {this.email = email;}
         public String getAlias() {return alias;}
         public String getCargo() {return cargo;}
         public String getNombre() {return nombre;}
-        public String getNacimiento() {return nacimiento;}
-        public String getEdad() {return "21";}
+        public Date getNacimiento() {return nacimiento;}
+        public String getEdad() {
+            LocalDate n = getNacimiento().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            LocalDate hoy = new Date().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            return String.valueOf( Period.between(n,hoy).getYears() );
+        }
         public String getTelefono() {return telefono;}
         public String getEmail() {return email;}
 //        public void getQr() {
