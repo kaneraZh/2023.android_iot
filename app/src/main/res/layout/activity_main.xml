@@ -38,7 +38,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="correo electronico"
-        app:layout_constraintTop_toTopOf="p"
         app:layout_constraintBottom_toTopOf="@id/btn_login"
         android:drawableRight="@drawable/baseline_lock_24"/>
     <Button
