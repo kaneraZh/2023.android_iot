@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
         this.login.setOnClickListener(
                 new View.OnClickListener(){
                     @Override
-                    public void onClick(View view) {login_firebase(get_user(), get_password());}
+                    public void onClick(View view) {firebase_login_test(get_user(), get_password());}
                 }
         );
     }
@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
     public void setPassword(EditText password) {this.password = password;}
     private String get_user(){ return this.user.getText().toString(); }
     private String get_password(){ return this.password.getText().toString(); }
-    public void login_firebase(String user, String password){
+    public void firebase_login_test(String user, String password){
         FirebaseAuth auth = FirebaseAuth.getInstance();
         auth.signInWithEmailAndPassword(user, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
