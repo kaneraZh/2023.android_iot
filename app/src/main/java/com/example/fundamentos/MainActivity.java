@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
     EditText user;
     public void setUser(EditText user) {this.user = user;}
     EditText password;
-    public void setPassword(EditText password) {this.password = password;}
+    public void setPassword(EditText password) { this.password = password; }
     private String get_user(){ return this.user.getText().toString(); }
     private String get_password(){ return this.password.getText().toString(); }
     public void firebase_login_test(String user, String password){
