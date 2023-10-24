@@ -1,35 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoggedUserActivity">
+    android:layout_centerHorizontal="true"
+    tools:context=".activities.LoggedUserActivity">
+
     <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tab_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+
         <com.google.android.material.tabs.TabItem
-            android:id="@+id/tab_list"
+            android:id="@+id/item_list"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="List" />
+
         <com.google.android.material.tabs.TabItem
-            android:id="@+id/tab_create"
+            android:id="@+id/item_create"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Create" />
     </com.google.android.material.tabs.TabLayout>
+
     <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/fragmentContainerView"
-        android:name="com.example.fundamentos.ListaFragment"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/fragment_container_view"
+        android:name="com.example.fundamentos.fragments.CreateFragment"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/tab_layout"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"/>
 
+    <Button
+        android:id="@+id/btn_logout"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:scrollbarAlwaysDrawHorizontalTrack="true"
+        android:scrollHorizontally="false"
+        app:icon="@drawable/baseline_logout_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

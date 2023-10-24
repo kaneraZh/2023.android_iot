@@ -1,4 +1,4 @@
-package com.example.fundamentos;
+package com.example.fundamentos.activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.fundamentos.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -38,11 +39,15 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         String texto = task.isSuccessful() ? "si funciono :D" : "no funciono";
-                        Log.e("hola", "onComplete: "+user+password, null);
+//                        Log.e("hola", "onComplete: "+user+password, null);
                         Toast.makeText(MainActivity.this, texto, Toast.LENGTH_SHORT).show();
                     }
                 }
             );
+    }
+    public void firebase_login(String user, String password){
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+
     }
 
     @Override
