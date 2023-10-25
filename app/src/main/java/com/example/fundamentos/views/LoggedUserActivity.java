@@ -1,4 +1,4 @@
-package com.example.fundamentos.activities;
+package com.example.fundamentos.views;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentContainerView;

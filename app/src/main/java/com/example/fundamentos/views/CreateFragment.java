@@ -1,4 +1,4 @@
-package com.example.fundamentos.fragments;
+package com.example.fundamentos.views;
 
 import android.os.Bundle;
 
