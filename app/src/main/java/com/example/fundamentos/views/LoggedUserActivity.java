@@ -9,6 +9,7 @@ import android.widget.Button;
 import com.example.fundamentos.R;
 import com.google.android.material.tabs.TabItem;
 import com.google.android.material.tabs.TabLayout;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class LoggedUserActivity extends AppCompatActivity {
     private FragmentContainerView fragment_container_view;
@@ -49,20 +50,24 @@ public class LoggedUserActivity extends AppCompatActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-
+                        logout();
                     }
                 }
         );
         this.btn_logout = btn_logout;
     }
     public void logout(){
-
+//        FirebaseAuth.getInstance(). metodo logout que no existe :(
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_logged_user);
-
+        setFragment_container_view( findViewById(R.id.fragment_container_view) );
+        setTab_layout( findViewById(R.id.tab_layout) );
+        setItem_list( findViewById(R.id.item_list) );
+        setItem_create( findViewById(R.id.item_create) );
+        setBtn_logout( findViewById(R.id.btn_logout) );
         }
 }

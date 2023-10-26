@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -62,7 +63,11 @@ public class MainActivity extends AppCompatActivity {
     }
     public void firebase_login(){
         if(FirebaseAuth.getInstance().getCurrentUser()!=null){
+            Log.e(null, "firebase_login: user found (" + FirebaseAuth.getInstance().getCurrentUser().getEmail().toString() + ")");
             startActivity( new Intent(this, LoggedUserActivity.class) );
+        }
+        else {
+            Log.e(null, "firebase_login: user not found");
         }
     }
 
