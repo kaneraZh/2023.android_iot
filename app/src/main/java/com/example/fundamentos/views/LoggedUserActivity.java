@@ -22,14 +22,7 @@ public class LoggedUserActivity extends AppCompatActivity {
 //=======================================================================================
                     @Override
                     public void onTabSelected(TabLayout.Tab tab) {
-//                        VERIFICAR SI FUNCIONA
-                        switch ( tab.getPosition() ){
-                            case 1:
-                                SwitchFragmentFocus( new ListaFragment() );
-                                break;
-                            default:
-                                SwitchFragmentFocus( new CreateFragment() );
-                        }
+                        SwitchFragmentFocus(tab.getPosition());
                     }
 //=======================================================================================
                     @Override
@@ -44,7 +37,16 @@ public class LoggedUserActivity extends AppCompatActivity {
     public void setItem_list(TabItem item_list) {this.item_list = item_list;}
     private TabItem item_create;
     public void setItem_create(TabItem item_create) {this.item_create = item_create;}
-    private void SwitchFragmentFocus(Fragment fragment){
+    private void SwitchFragmentFocus(int id){
+        Fragment fragment;
+        switch ( id ){
+            case 1:
+                fragment = new CreateFragment();
+                break;
+            default:
+                fragment = new ListaFragment();
+                break;
+        }
         getSupportFragmentManager().beginTransaction()
                 .replace(fragment_container_view.getId(), fragment, null)
                 .setReorderingAllowed(true)
@@ -76,5 +78,6 @@ public class LoggedUserActivity extends AppCompatActivity {
         setItem_list( findViewById(R.id.item_list) );
         setItem_create( findViewById(R.id.item_create) );
         setBtn_logout( findViewById(R.id.btn_logout) );
+        SwitchFragmentFocus(0);
         }
 }
