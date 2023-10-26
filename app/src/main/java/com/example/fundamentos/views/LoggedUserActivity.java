@@ -1,6 +1,7 @@
 package com.example.fundamentos.views;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentContainerView;
 import android.os.Bundle;
 import android.view.View;
@@ -22,7 +23,13 @@ public class LoggedUserActivity extends AppCompatActivity {
                     @Override
                     public void onTabSelected(TabLayout.Tab tab) {
 //                        VERIFICAR SI FUNCIONA
-                        SwitchFragmentFocus(tab.getClass());
+                        switch ( tab.getPosition() ){
+                            case 1:
+                                SwitchFragmentFocus( new ListaFragment() );
+                                break;
+                            default:
+                                SwitchFragmentFocus( new CreateFragment() );
+                        }
                     }
 //=======================================================================================
                     @Override
@@ -37,9 +44,9 @@ public class LoggedUserActivity extends AppCompatActivity {
     public void setItem_list(TabItem item_list) {this.item_list = item_list;}
     private TabItem item_create;
     public void setItem_create(TabItem item_create) {this.item_create = item_create;}
-    private void SwitchFragmentFocus(Class cls){
+    private void SwitchFragmentFocus(Fragment fragment){
         getSupportFragmentManager().beginTransaction()
-                .replace(fragment_container_view.getId(), cls, null)
+                .replace(fragment_container_view.getId(), fragment, null)
                 .setReorderingAllowed(true)
                 .addToBackStack(null)
                 .commit();
