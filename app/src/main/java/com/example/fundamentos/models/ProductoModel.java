@@ -1,5 +1,7 @@
 package com.example.fundamentos.models;
 
+import android.view.View;
+
 import androidx.annotation.NonNull;
 
 import com.example.fundamentos.dtos.Producto;
@@ -15,7 +17,7 @@ public class ProductoModel {
     private final static DatabaseReference firebase_reference = FirebaseDatabase.getInstance().getReference("producto");
 
 
-    public void add_lsitener() {
+    public void add_listener(View view) {
         firebase_reference.addValueEventListener(
                 new ValueEventListener() {
 //                    context
