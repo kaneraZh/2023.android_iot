@@ -35,18 +35,23 @@ public class CreateFragment extends Fragment {
     private EditText text_nombre;
     public void setText_nombre(EditText text_nombre) {this.text_nombre = text_nombre;}
     public String get_nombre(){ return this.text_nombre.getText().toString(); }
+    public void set_nombre(String nombre){ this.text_nombre.setText(nombre); }
 
     private EditText text_precio;
     public void setText_precio(EditText text_precio) {this.text_precio = text_precio;}
     public int get_precio(){ return Integer.valueOf(this.text_precio.getText().toString()); }
+    public void set_precio(int precio){ this.text_precio.setText( String.valueOf(precio) ); }
 
     private EditText text_stock;
     public void setText_stock(EditText text_stock) {this.text_stock = text_stock;}
     public int get_stock(){ return Integer.valueOf(this.text_stock.getText().toString()); }
+    public void set_stock(int stock){ this.text_stock.setText( String.valueOf(stock) ); }
 
     private EditText text_descripcion;
     public void setText_descripcion(EditText text_descripcion) {this.text_descripcion = text_descripcion;}
     public String get_descripcion(){ return this.text_descripcion.getText().toString(); }
+    public void set_descripcion(String descripcion){ this.text_descripcion.setText(descripcion); }
+    
     public Producto get_producto(){ return new Producto(get_nombre(),get_descripcion(),get_precio(),get_stock()); }
 
     ProductoModel firebase_instance;
@@ -59,6 +64,10 @@ public class CreateFragment extends Fragment {
                     @Override
                     public void onClick(View view) {
                         firebase_instance.add(get_nombre(), get_producto());
+                        set_nombre("");
+                        set_precio(0);
+                        set_stock(0);
+                        set_descripcion("");
                     }
                 }
         );

@@ -17,12 +17,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/text_nombre"
+        android:numeric="integer"
         android:hint="Precio" />
     <EditText
         android:id="@+id/text_stock"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/text_precio"
+        android:numeric="integer"
         android:hint="Stock"/>
     <EditText
         android:id="@+id/text_descripcion"

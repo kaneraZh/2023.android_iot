@@ -5,33 +5,54 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".views.DetalleActivity">
-    <TextView
+    <EditText
         android:id="@+id/text_nombre"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="%nombre"
         android:textSize="30dp"
         app:layout_constraintTop_toTopOf="parent"/>
-    <TextView
+    <EditText
         android:id="@+id/text_precio"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="%precio"
         android:textSize="30dp"
         app:layout_constraintTop_toBottomOf="@id/text_nombre"/>
-    <TextView
+    <EditText
         android:id="@+id/text_stock"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="%stock"
         android:textSize="30dp"
         app:layout_constraintTop_toBottomOf="@id/text_precio"/>
-    <TextView
+    <EditText
         android:id="@+id/text_descripcion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="%descripcion"
         android:textSize="30dp"
         app:layout_constraintTop_toBottomOf="@id/text_stock"/>
+    <Button
+        android:id="@+id/btn_actualizar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Actualizar"
+        app:layout_constraintTop_toBottomOf="@id/text_descripcion"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="40dp"
+        android:textSize="20dp"/>
+    <Button
+        android:id="@+id/btn_borrar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Borrar"
+        android:textSize="20dp"
+        app:layout_constraintTop_toBottomOf="@id/text_descripcion"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="40dp"
+        android:backgroundTint="@color/red"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

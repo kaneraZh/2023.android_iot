@@ -3,6 +3,8 @@ package com.example.fundamentos.views;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentContainerView;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -66,7 +68,8 @@ public class LoggedUserActivity extends AppCompatActivity {
         this.btn_logout = btn_logout;
     }
     public void logout(){
-//        FirebaseAuth.getInstance(). metodo logout que no existe :(
+        FirebaseAuth.getInstance().signOut();
+        startActivity(new Intent(this, MainActivity.class));
     }
 
     @Override

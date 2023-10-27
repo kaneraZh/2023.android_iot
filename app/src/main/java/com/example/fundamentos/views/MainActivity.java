@@ -69,6 +69,6 @@ public class MainActivity extends AppCompatActivity {
         setLogin( findViewById(R.id.btn_login));
         setUser( findViewById(R.id.input_correo));
         setPassword( findViewById(R.id.input_clave));
-        firebase_login("androidiot@admin.cl", "admin123");
+        firebase_login();
     }
 }
